@@ -14,8 +14,8 @@ blink.elf: blink.ld blink.o
 blink.o: blink.s
 	$(ASM) -o blink.o blink.s
 
-flash: blink.elf
-	st-flash write $(BUILD_DIR)/blink.bin 0x08000000
+flash: blink.bin
+	st-flash write --connect-under-reset $(BUILD_DIR)/blink.bin 0x08000000
 
 clean:
 	rm -f blink.o $(BUILD_DIR)/blink.elf $(BUILD_DIR)/blink.bin
