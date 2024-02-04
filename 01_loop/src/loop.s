@@ -2,10 +2,10 @@
 .syntax unified
 .thumb
 
-.global loop
+.global _reset_exception_handler
 
 .section code
 
-loop:
+_reset_exception_handler:
 	add r0, r0, 1
-	bl loop
+	bl _reset_exception_handler
