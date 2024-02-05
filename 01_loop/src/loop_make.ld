@@ -15,6 +15,6 @@ SECTIONS {
 		LONG(0x20000000 + 20K);
 		LONG(_reset_exception_handler | 1);
 		. = 0x130;
-		CMakeFiles/loop.elf.dir/loop.s.o(text);
+		./build/loop.o(text);
 	}
 }

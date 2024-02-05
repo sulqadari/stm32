@@ -4,7 +4,7 @@ static void enable_port_clock(void);
 static void configure_pin(void);
 static void toggle_pin(void);
 
-void
+int
 main(void)
 {
 	enable_port_clock();
@@ -17,6 +17,8 @@ main(void)
 
 		toggle_pin();
 	}
+
+	return (0);
 }
 
 static void enable_port_clock(void)
