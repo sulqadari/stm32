@@ -10,9 +10,10 @@
 // with maximum output speed 2 MHz
 loop:
 	// Enable clock in IO port C
-	ldr r0, =0x40021000 + 0x18	// load address of RCC_APB2ENR to r0
-	ldr r1, [r0]				// load r0 to r1, i.e. copy
-	orr r1, 1 << 4				// (RCC_APB2ENR | 0x04), i.e. set IOPCEN bit
+	ldr r0, =0x40021000 + 0x18	// assgin reference to RCC_APB2ENR to r0
+	ldr r1, [r0]				// get the value of RCC_APB2ENR to r1
+	orr r1, 1 << 4				// perform (RCC_APB2ENR | 0x04) on RCC_APB2ENR,
+								// i.e. set IOPCEN bit
 	str r1, [r0]				// store updated value of RCC_APB2ENR
 
 	// Configure PC13. default value: CNF[0:1] MODE[0:0]

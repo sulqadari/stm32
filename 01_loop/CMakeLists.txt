@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.25)
 
 project(01_loop LANGUAGES ASM C)
 
-# set(CMAKE_C_COMPILER	"arm-none-eabi-gcc")
 set(CMAKE_ASM_COMPILER	"arm-none-eabi-gcc")
 set(CMAKE_LINKER		"arm-none-eabi-ld")
 set(OBJCOPY				"arm-none-eabi-objcopy")
