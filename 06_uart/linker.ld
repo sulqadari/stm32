@@ -5,6 +5,8 @@ MEMORY
 }
 
 SECTIONS {
+
+	
 	.isr_vector :
 	{
 		LONG(0X20000000 + 20K);
@@ -12,7 +14,6 @@ SECTIONS {
 		 * .bss, .data and proceed execution of func_start(). */
 		. = 0x00000004;
 		LONG(_reset_exception_handler | 1);
-
 		. = 0x00000130;
 	} > Flash
 

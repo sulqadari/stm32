@@ -17,32 +17,32 @@ static void
 enable_usart(void)
 {
 	/* Enable PORT B clock. */
-	uint32_t rcc_apb2enr_value = *RCC_APB2ENR;
+	uint32_t rcc_apb2enr_value = *(RCC_APB2ENR);
 	rcc_apb2enr_value |= (1 << 3);
-	*RCC_APB2ENR = rcc_apb2enr_value;
+	*(RCC_APB2ENR) = rcc_apb2enr_value;
 
 	/* Configure GPIOB10 as alternate function output push-pull 2MHz. */
-	uint32_t gpiob_crh_value = *GPIOB_CRH;
+	uint32_t gpiob_crh_value = *(GPIOB_CRH);
 	gpiob_crh_value &= ~(1 << 8);
 	gpiob_crh_value |=  (1 << 9);
 	gpiob_crh_value &= ~(1 << 10);
 	gpiob_crh_value |=  (1 << 11);
-	*GPIOB_CRH = gpiob_crh_value;
+	*(GPIOB_CRH) = gpiob_crh_value;
 
 	/* Enable USART3 clock. */
-	uint32_t rcc_apb1enr_value = *RCC_APB1ENR;
+	uint32_t rcc_apb1enr_value = *(RCC_APB1ENR);
 	rcc_apb1enr_value |= 1 << 18;
-	*RCC_APB1ENR = rcc_apb1enr_value;
+	*(RCC_APB1ENR) = rcc_apb1enr_value;
 
 	/* set baud rate to 9600. */
 	uint32_t usart3_brr_value = 0x00000341;
-	*USART3_BRR = usart3_brr_value;
+	*(USART3_BRR) = usart3_brr_value;
 
 	/* Enable USART3 and transmitter. */
-	uint32_t usart_cr1_value = *USART3_CR1;
+	uint32_t usart_cr1_value = *(USART3_CR1);
 	usart_cr1_value |= (1 << 13); /* Enable USART. */
 	usart_cr1_value |= (1 << 3);  /* Enable transmitter. */
-	*USART3_CR1 = usart_cr1_value;
+	*(USART3_CR1) = usart_cr1_value;
 }
 
 static void
@@ -57,10 +57,10 @@ send_string(const char* data)
 
 		/* Wait until data is transferred to the shift register. */
 		do {
-			usart3_sr_value = *USART3_SR;
+			usart3_sr_value = *(USART3_SR);
 		} while ((usart3_sr_value & usart3_sr_txe) == 0);
 
-		*USART3_DR = (uint32_t)ch & 0x000000FF;
+		*(USART3_DR) = (uint32_t)ch & 0x000000FF;
 	}
 }
 

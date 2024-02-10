@@ -16,7 +16,7 @@ reset_exception_handler.o: reset_exception_handler.s
 	$(ASM) -o reset_exception_handler.o reset_exception_handler.s
 
 usart.o: usart.c
-	$(COMPILER) -mcpu=cortex-m3 -g -O3 -c -o usart.o usart.c
+	$(COMPILER) -mcpu=cortex-m3 -g -O0 -c -o usart.o usart.c
 
 flash: usart.bin
 	st-flash --connect-under-reset write $(BUILD_DIR)/usart.bin 0x08000000
