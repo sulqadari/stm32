@@ -19,10 +19,10 @@ _reset_exception_handler:
 	copy_bss_end:
 
 	// copy .data section from flash to SRAM
-	ldr r0, = _flash_data_start
-	ldr r1, = _sram_data_start
-	ldr r2, = _sram_data_end
-
+	ldr r0, =_flash_data_start
+	ldr r1, =_sram_data_start
+	ldr r2, =_sram_data_end
+	
 	copy_data_loop:
 		cmp r1, r2
 		bge copy_data_end
@@ -31,4 +31,4 @@ _reset_exception_handler:
 		b copy_data_loop
 	copy_data_end:
 
-	b func_start
+	b main

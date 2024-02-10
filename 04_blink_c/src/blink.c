@@ -11,7 +11,7 @@ main(void)
 	configure_pin();
 
 	for (;;) {
-		for (volatile uint32_t delay = 2000000; delay > 0; --delay){
+		for (volatile uint32_t delay = 1000000; delay > 0; --delay){
 
 		}
 
