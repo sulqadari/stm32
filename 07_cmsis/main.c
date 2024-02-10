@@ -68,7 +68,7 @@ send(const char* msg)
 static void
 send_message(void)
 {
-	static char data[13] = "counter: 0\r\n";
+	static char data[] = "counter: 0\r\n";
 	static uint8_t counter = 0;
 	counter = (counter + 1) % 10;
 	data[9] = counter + '0';
