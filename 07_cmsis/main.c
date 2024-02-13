@@ -13,24 +13,21 @@ enable_usart(void)
 	/* Enable port B clock. */
 	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
 
-	uint32_t gpiob_crh = GPIOB->CRH;
-	gpiob_crh &= ~GPIO_CRH_MODE10_0;
-	gpiob_crh |=  GPIO_CRH_MODE10_1;
-	gpiob_crh &= ~GPIO_CRH_CNF10_0;
-	gpiob_crh |=  GPIO_CRH_CNF10_1;
-	GPIOB->CRH = gpiob_crh;
+	/* Configure PB10 as alternate function output in push-pull mode 2MHz. */
+	GPIOB->CRH &= ~GPIO_CRH_MODE10_0;
+	GPIOB->CRH |=  GPIO_CRH_MODE10_1;
+	GPIOB->CRH &= ~GPIO_CRH_CNF10_0;
+	GPIOB->CRH |=  GPIO_CRH_CNF10_1;
 
-	/* enable USAR3 clock. */
+	/* Enable USAR3 clock. */
 	RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
 
 	/* set baud rate. */
 	USART3->BRR = 0x0341;
 
 	/* enable USART3 and transmitter. */
-	uint32_t usart3_cr1 = USART3->CR1;
-	usart3_cr1 |= USART_CR1_UE;
-	usart3_cr1 |= USART_CR1_TE;
-	USART3->CR1 = usart3_cr1;
+	USART3->CR1 |= USART_CR1_UE;
+	USART3->CR1 |= USART_CR1_TE;
 }
 
 static void
@@ -60,7 +57,7 @@ send(const char* msg)
 		/* wait until data is transferred to the shift register. */
 		while ((USART3->SR & USART_SR_TXE) == 0) { }
 
-		/* Write data to the dat aregister. */
+		/* Write data to the data register. */
 		USART3->DR = (uint32_t)ch & 0x000000FF;
 	}
 }
