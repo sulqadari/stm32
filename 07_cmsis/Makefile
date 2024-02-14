@@ -25,6 +25,8 @@ uarts.elf: $(LDSCRIPT) startup_stm32f103xb.o system_stm32f1xx.o main.o
 	$(LD) -o ./build/$@ -T $(LDSCRIPT) ./build/startup_stm32f103xb.o ./build/system_stm32f1xx.o ./build/main.o
 
 startup_stm32f103xb.o: $(CMSIS_STARTUP)
+	@rm -rf build > /dev/null
+	@mkdir build
 	$(AS) -o ./build/$@ $<
 
 system_stm32f1xx.o: $(CMSIS_SYSTEM)
