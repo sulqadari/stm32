@@ -24,7 +24,6 @@ enable_usart(void)
 
 	/* set baud rate. */
 	USART3->BRR = 0x0341;
-
 	/* enable USART3 and transmitter. */
 	USART3->CR1 |= USART_CR1_UE;
 	USART3->CR1 |= USART_CR1_TE;
