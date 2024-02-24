@@ -1,7 +1,7 @@
 # Note: before executing this Makefile pass in the following command:
 # $ export CMSIS_STM32F1=/home/telman/work/STM32CubeF1/Drivers/CMSIS
 
-CMSIS_STM32F1	:= /home/telman/develop/STM32_assembly/07_cmsis/CMSIS
+CMSIS_STM32F1	:= $(shell pwd)/CMSIS
 CMSIS_TEMPLATES := $(CMSIS_STM32F1)/Device/ST/STM32F1xx/Source/Templates
 CMSIS_SYSTEM	:= $(CMSIS_TEMPLATES)/system_stm32f1xx.c
 CMSIS_STARTUP	:= $(CMSIS_TEMPLATES)/gcc/startup_stm32f103xb.s
